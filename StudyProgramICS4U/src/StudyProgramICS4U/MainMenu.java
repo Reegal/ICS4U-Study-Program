@@ -13,7 +13,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     private NotesMenu notesWindow;
     
-    private QuizMenu notesQuiz;
+    private QuizMenu quizWindow;
     
     
     
@@ -55,9 +55,19 @@ public class MainMenu extends javax.swing.JFrame {
 
         btnQuiz.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         btnQuiz.setText("Quiz");
+        btnQuiz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQuizActionPerformed(evt);
+            }
+        });
 
         btnExit.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         btnExit.setText("Exit");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -89,8 +99,30 @@ public class MainMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNotesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNotesActionPerformed
-        
+        //check if window has already been created
+        if(notesWindow == null){
+            notesWindow = new NotesMenu(this);
+        }
+        //set the other window to visible
+        notesWindow.setVisible(true);
+        //hide this windo
+        this.setVisible(false);
     }//GEN-LAST:event_btnNotesActionPerformed
+
+    private void btnQuizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuizActionPerformed
+        //check if window has already been created
+        if(quizWindow == null){
+            quizWindow = new QuizMenu(this);
+        }
+        //set the other window to visible
+        quizWindow.setVisible(true);
+        //hide this windo
+        this.setVisible(false);
+    }//GEN-LAST:event_btnQuizActionPerformed
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnExitActionPerformed
 
     /**
      * @param args the command line arguments
