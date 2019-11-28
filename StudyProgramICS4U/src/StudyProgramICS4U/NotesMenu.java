@@ -31,9 +31,9 @@ public class NotesMenu extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         txtNotes = new javax.swing.JTextArea();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnPrev = new javax.swing.JButton();
+        btnNext = new javax.swing.JButton();
+        btnMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,14 +44,19 @@ public class NotesMenu extends javax.swing.JFrame {
         txtNotes.setText("Waterfall Method:\n\n~~~~~~~~~\n\n~~~~~~~~~~~~~~~~\n\n~~\n\n~~~~~~~~~~~");
         jScrollPane1.setViewportView(txtNotes);
 
-        jButton1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jButton1.setText("Prev");
+        btnPrev.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        btnPrev.setText("Prev");
 
-        jButton2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jButton2.setText("Next");
+        btnNext.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        btnNext.setText("Next");
 
-        jButton3.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
-        jButton3.setText("Menu");
+        btnMenu.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        btnMenu.setText("Menu");
+        btnMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMenuActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -60,12 +65,12 @@ public class NotesMenu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnMenu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnPrev, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)))
+                        .addComponent(btnNext, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -75,22 +80,27 @@ public class NotesMenu extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnPrev)
+                    .addComponent(btnNext))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addComponent(btnMenu)
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
+        mainWindow.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btnMenuActionPerformed
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnMenu;
+    private javax.swing.JButton btnNext;
+    private javax.swing.JButton btnPrev;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea txtNotes;
     // End of variables declaration//GEN-END:variables
