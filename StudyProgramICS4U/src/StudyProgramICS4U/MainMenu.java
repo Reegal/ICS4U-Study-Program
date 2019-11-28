@@ -11,6 +11,12 @@ package StudyProgramICS4U;
  */
 public class MainMenu extends javax.swing.JFrame {
 
+    private NotesMenu notesWindow;
+    
+    private QuizMenu notesQuiz;
+    
+    
+    
     /**
      * Creates new form MainMenu
      */
@@ -41,6 +47,11 @@ public class MainMenu extends javax.swing.JFrame {
 
         btnNotes.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         btnNotes.setText("Study Notes");
+        btnNotes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNotesActionPerformed(evt);
+            }
+        });
 
         btnQuiz.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
         btnQuiz.setText("Quiz");
@@ -76,6 +87,10 @@ public class MainMenu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnNotesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNotesActionPerformed
+        
+    }//GEN-LAST:event_btnNotesActionPerformed
 
     /**
      * @param args the command line arguments
