@@ -45,7 +45,6 @@ public class MainMenu extends javax.swing.JFrame {
             }
           
           
-          String title;
           String[] answersArr;
           ArrayList<String> answersList;
           Question q;
