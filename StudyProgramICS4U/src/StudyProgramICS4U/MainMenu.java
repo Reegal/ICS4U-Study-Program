@@ -5,6 +5,11 @@
  */
 package StudyProgramICS4U;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
  *
  * @author repan6047
@@ -15,13 +20,46 @@ public class MainMenu extends javax.swing.JFrame {
     
     private QuizMenu quizWindow;
     
-    
+    private ArrayList<Question> qList = new ArrayList();
     
     /**
      * Creates new form MainMenu
      */
     public MainMenu() {
         initComponents();
+        
+        String title;
+        String[] answersArr;
+        ArrayList<String> answersList;
+        Question q;
+        
+        try{
+            File f = new File("src\\StudyProgramICS4U\\questions.txt");
+            
+            Scanner s = new Scanner(f);
+            
+            while(s.hasNextLine()){
+                title = s.nextLine();
+                
+                answersArr = s.nextLine().split(",");
+                
+                answersList = new ArrayList();
+                
+                for (int i = 0; i < answersArr.length; i++) {
+                    answersList.add(answersArr[i]);
+                }
+                
+                q = new Question(title, answersList);
+                
+                qList.add(q);
+            }
+        }catch(FileNotFoundException e){
+            System.out.println("Error: " + e);
+        }
+    }
+    
+    public ArrayList getQList(){
+        return qList;
     }
 
     /**
