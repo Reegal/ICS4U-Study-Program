@@ -17,6 +17,14 @@ When was the Waterfall Method created?
 Which of these is NOT a way to measure the success of a program?
 How many users does the program have?,Does the project solve the problem it was meant to?,Is it easy to maintain and keep up-to-date?,Is it scalable to meet the needs of the client?
 What does SDLC stand for?
-Software Development Life Cycle,Software Data Location and Creation, Super Data Location Client, Software Developed Length Creator
+Software Development Life Cycle,Software Data Location and Creation,Super Data Location Client,Software Developed Length Creator
 What is UML used for?
 It visually represents the components of a system,It allows the program to be run on all platforms,It allows multiple people to work on the system simultaneously,It has no use
+Which of the following is NOT part of the SDLC?
+Product Launch,Analysis,Design,Implementation
+Which of the following is a good way to describe the Design phase of the Waterfall Method?
+How can we accomplish this task?,What colour should the final project be?,What font should we use for the final project?,None of these answers apply
+Which of the following is NOT a part of the Waterfall Method?
+None of these answers,Maintenance,Implementation,Analysis
+Which of the following is NOT a useful tool for project management?
+DeConkey Timeline,Gantt Chart,UML,Waterfall Method
