@@ -1,1 +1,12 @@
-
+Gantt Chart
+Developed by Henry Gantt in 1910#Used in the construction of the Hoover Dam and Eisenhower National Defense Interstate Highway System#Used to visualize the progress of individual parts of a larger project
+UML
+Stands for Unified Modeling Language#Can be used to describe the designs of complex software#Visually represents the components of a system#Complicated to learn but very powerful
+Waterfall Method
+Developed by Dr Winston Royce in 1970#Consists of several phases#Problem statement - What does the program need to do?#Analysis - Can we solve the problem with current resources?#Design - How can we accomplish this task? How can we break it down?#Implementation - Write code, documenting as you go#Integration / Testing - Experiment with the created code, looking for errors to get ready to complete#Maintenance - fixing issues as users use the program and find problems
+The cost of developing software
+SDLC stands for Software Development Life Cycle#Not equally spread out over each phase#Mistakes found earlier in the development process are less expensive to fix#Analysis - 8%#Design - 8%#Implementation - 8%#Integration - 8%#Maintenance - 68%
+Parts of a system
+The client#Analysts#Designers and developers#Testers#Users
+Measuring success
+Does the project solve the problem it was meant to?#Is it easy to maintain and keep up-to-date?#Is it scalable to meet the needs of the client?#Is there a support system in place for the client?#Was it delivered on time and fully operational?#Was the client happy with the final product?
