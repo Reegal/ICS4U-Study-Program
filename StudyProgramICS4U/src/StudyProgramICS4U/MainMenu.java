@@ -19,24 +19,39 @@ public class MainMenu extends javax.swing.JFrame {
     private NotesMenu notesWindow;
     
     private QuizMenu quizWindow;
-    
+
+    private ArrayList<Note> notes;
     private ArrayList<Question> qList = new ArrayList();
+
     
     /**
      * Creates new form MainMenu
      */
     public MainMenu() {
         initComponents();
-        
-        String title;
-        String[] answersArr;
-        ArrayList<String> answersList;
-        Question q;
-        
-        try{
-            File f = new File("src\\StudyProgramICS4U\\questions.txt");
-            
+
+        try {
+            File f = new File("src//StudyProgramICS4U//notes.txt");
+            notes = new ArrayList();
             Scanner s = new Scanner(f);
+            String points[];
+            String title;
+            Note n;
+            while (s.hasNextLine()) {
+               title = s.nextLine();
+               points = s.nextLine().split("#");
+               n = new Note(title,points);
+               notes.add(n); 
+            }
+          
+          
+          String title;
+          String[] answersArr;
+          ArrayList<String> answersList;
+          Question q;
+           f = new File("src\\StudyProgramICS4U\\questions.txt");
+            
+           s = new Scanner(f);
             
             while(s.hasNextLine()){
                 title = s.nextLine();
@@ -53,14 +68,17 @@ public class MainMenu extends javax.swing.JFrame {
                 
                 qList.add(q);
             }
-        }catch(FileNotFoundException e){
-            System.out.println("Error: " + e);
+        } catch (FileNotFoundException e) {
+            System.out.println(e);
         }
     }
-    
-    public ArrayList getQList(){
-        return qList;
+    public ArrayList getNotes() {
+        return notes;
     }
+  public ArrayList getQList(){
+        return qList;
+  }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
