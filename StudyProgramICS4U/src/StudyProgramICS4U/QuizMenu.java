@@ -11,11 +11,13 @@ package StudyProgramICS4U;
  */
 public class QuizMenu extends javax.swing.JFrame {
 
+    MainMenu mainWindow;
     /**
      * Creates new form QuizMenu
      */
-    public QuizMenu() {
+    public QuizMenu(MainMenu m) {
         initComponents();
+        mainWindow = m;
     }
 
     /**
@@ -63,6 +65,11 @@ public class QuizMenu extends javax.swing.JFrame {
 
         btnExit.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         btnExit.setText("Exit");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -107,6 +114,11 @@ public class QuizMenu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        mainWindow.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnExitActionPerformed
 
     
 
