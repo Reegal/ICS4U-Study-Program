@@ -5,6 +5,8 @@
  */
 package StudyProgramICS4U;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author repan6047
@@ -12,12 +14,21 @@ package StudyProgramICS4U;
 public class NotesMenu extends javax.swing.JFrame {
 
     MainMenu mainWindow;
+    
+    int index = 0;
+    
+    ArrayList nList;
     /**
      * Creates new form NotesMenu
      */
     public NotesMenu(MainMenu m) {
         initComponents();
         mainWindow = m;
+        
+        nList = m.getNotes();
+        
+        txtNotes.setText("" + nList.get(index));
+        txtNotes.setCaretPosition(0);
     }
 
     /**
@@ -36,19 +47,32 @@ public class NotesMenu extends javax.swing.JFrame {
         btnMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         txtNotes.setEditable(false);
         txtNotes.setColumns(20);
         txtNotes.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        txtNotes.setLineWrap(true);
         txtNotes.setRows(5);
         txtNotes.setText("Waterfall Method:\n\n~~~~~~~~~\n\n~~~~~~~~~~~~~~~~\n\n~~\n\n~~~~~~~~~~~");
+        txtNotes.setWrapStyleWord(true);
         jScrollPane1.setViewportView(txtNotes);
 
         btnPrev.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         btnPrev.setText("Prev");
+        btnPrev.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrevActionPerformed(evt);
+            }
+        });
 
         btnNext.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         btnNext.setText("Next");
+        btnNext.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNextActionPerformed(evt);
+            }
+        });
 
         btnMenu.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         btnMenu.setText("Menu");
@@ -94,6 +118,28 @@ public class NotesMenu extends javax.swing.JFrame {
         mainWindow.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnMenuActionPerformed
+
+    private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        if(index == nList.size() - 1){
+            index = 0;
+        }else{
+            index++;
+        }
+        
+        txtNotes.setText("" + nList.get(index));
+        txtNotes.setCaretPosition(0);
+    }//GEN-LAST:event_btnNextActionPerformed
+
+    private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
+        if(index == 0){
+            index = nList.size() - 1;
+        }else{
+            index--;
+        }
+        
+        txtNotes.setText("" + nList.get(index));
+        txtNotes.setCaretPosition(0);
+    }//GEN-LAST:event_btnPrevActionPerformed
 
     
 

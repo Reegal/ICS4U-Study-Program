@@ -67,7 +67,7 @@ public class Note {
     public String toString() {
         String output = title; // initializes the outputted string with the note's title
         for (int i = 0; i < points.length; i ++) { // loops the following for each point in the points array
-            output += "\n- " + points[i]; // adds the point to the output string
+            output += "\n\n-" + points[i]; // adds the point to the output string
         }
         return output;
     }
