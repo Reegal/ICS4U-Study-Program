@@ -5,10 +5,10 @@
  */
 package StudyProgramICS4U;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -32,9 +32,10 @@ public class MainMenu extends javax.swing.JFrame {
 
         try {
             //Creating scanner and file
-            File f = new File("src//StudyProgramICS4U//notes.txt");
+            InputStream in = MainMenu.class.getResourceAsStream("notes.txt");
+            //File f = new File("src//StudyProgramICS4U//notes.txt");
             notes = new ArrayList();
-            Scanner s = new Scanner(f);
+            Scanner s = new Scanner(in);
             //creating variables
             String points[];
             String title;
@@ -55,9 +56,10 @@ public class MainMenu extends javax.swing.JFrame {
           ArrayList<String> answersList;
           Question q;
           //changing scanner and file to the second data file
-           f = new File("src\\StudyProgramICS4U\\questions.txt");
+          in = MainMenu.class.getResourceAsStream("questions.txt");
+           //f = new File("src\\StudyProgramICS4U\\questions.txt");
             
-           s = new Scanner(f);
+           s = new Scanner(in);
             //getting questions from file
             while(s.hasNextLine()){
                 //reading title and answers
@@ -76,8 +78,8 @@ public class MainMenu extends javax.swing.JFrame {
                 qList.add(q);
             }
             //catch statement, catches the error that comes from not being able to find the data file
-        } catch (FileNotFoundException e) {
-            System.out.println(e);
+        } catch (NullPointerException e) {
+             JOptionPane.showMessageDialog(null, e);
         }
     }
     /**
