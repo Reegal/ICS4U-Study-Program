@@ -12,22 +12,24 @@ import java.util.ArrayList;
  * @author repan6047
  */
 public class NotesMenu extends javax.swing.JFrame {
-
+    //reference to the main menu
     MainMenu mainWindow;
-    
+    //index of arraylist
     int index = 0;
-    
+    //the arraylist
     ArrayList nList;
     /**
      * Creates new form NotesMenu
      */
     public NotesMenu(MainMenu m) {
         initComponents();
+        //opens the connection
         mainWindow = m;
-        
+        //gets the notes list
         nList = m.getNotes();
-        
+        //sets the text
         txtNotes.setText("" + nList.get(index));
+        //sets the position
         txtNotes.setCaretPosition(0);
     }
 
@@ -115,26 +117,29 @@ public class NotesMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
+        //makes this windo visible
         mainWindow.setVisible(true);
+        //hides the main menu
         this.setVisible(false);
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
-        if(index == nList.size() - 1){
-            index = 0;
+        if(index == nList.size() - 1){//if at the end
+            index = 0;//go to the beginning
         }else{
-            index++;
+            index++;//otherwise add 1
         }
         
+        //set the text and position
         txtNotes.setText("" + nList.get(index));
         txtNotes.setCaretPosition(0);
     }//GEN-LAST:event_btnNextActionPerformed
 
     private void btnPrevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrevActionPerformed
-        if(index == 0){
-            index = nList.size() - 1;
+        if(index == 0){//if at the beginning
+            index = nList.size() - 1;//go to the end
         }else{
-            index--;
+            index--;//otherwise remove one
         }
         
         txtNotes.setText("" + nList.get(index));
