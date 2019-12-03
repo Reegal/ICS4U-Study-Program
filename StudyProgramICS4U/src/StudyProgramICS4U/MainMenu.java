@@ -186,9 +186,7 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btnQuizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuizActionPerformed
         //check if window has already been created
-        if(quizWindow == null){
-            quizWindow = new QuizMenu(this);
-        }
+        quizWindow = new QuizMenu(this);
         //set the other window to visible
         quizWindow.setVisible(true);
         //hide this window
