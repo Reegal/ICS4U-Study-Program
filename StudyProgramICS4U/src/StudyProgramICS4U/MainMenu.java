@@ -31,49 +31,66 @@ public class MainMenu extends javax.swing.JFrame {
         initComponents();
 
         try {
+            //Creating scanner and file
             File f = new File("src//StudyProgramICS4U//notes.txt");
             notes = new ArrayList();
             Scanner s = new Scanner(f);
+            //creating variables
             String points[];
             String title;
             Note n;
+            //Adding notes to array list
             while (s.hasNextLine()) {
+                //reading title and points
                title = s.nextLine();
                points = s.nextLine().split("#");
+               //crating note object
                n = new Note(title,points);
+               //adding note to arraylist
                notes.add(n); 
             }
           
-          
+          //creating variables
           String[] answersArr;
           ArrayList<String> answersList;
           Question q;
+          //changing scanner and file to the second data file
            f = new File("src\\StudyProgramICS4U\\questions.txt");
             
            s = new Scanner(f);
-            
+            //getting questions from file
             while(s.hasNextLine()){
+                //reading title and answers
                 title = s.nextLine();
                 
                 answersArr = s.nextLine().split(",");
-                
+                //creating array list
                 answersList = new ArrayList();
-                
+                //putting answers from array into array list
                 for (int i = 0; i < answersArr.length; i++) {
                     answersList.add(answersArr[i]);
                 }
-                
+                //creating question object
                 q = new Question(title, answersList);
-                
+                //adding question to arraylist
                 qList.add(q);
             }
+            //catch statement, catches the error that comes from not being able to find the data file
         } catch (FileNotFoundException e) {
             System.out.println(e);
         }
     }
+    /**
+     * Accessor method for arraylist of notes
+     * @return the arraylist note
+     */
     public ArrayList getNotes() {
         return notes;
     }
+    /**
+     * Accessor method for list of questions
+     * @return arraylist of questions
+     */
   public ArrayList getQList(){
         return qList;
   }
