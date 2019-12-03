@@ -27,12 +27,12 @@ public class QuizMenu extends javax.swing.JFrame {
         initComponents();
         mainWindow = m;
         list = m.getQList();
-        Collections.shuffle(list);
-        barProgress.setValue(0);
+        Collections.shuffle(list); // shuffles the order of questions
+        barProgress.setValue(0); // reset progress bar 
         questionCount = 0;
         noCorrect = 0;
-        results = "RESULTS\n\n";
-        updateQuestion();
+        results = "RESULTS\n\n"; // initialize results output string
+        updateQuestion(); // update the displayed question and answers
     }
 
     /**
@@ -107,7 +107,7 @@ public class QuizMenu extends javax.swing.JFrame {
                     .addComponent(barProgress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblQuestion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 434, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 575, Short.MAX_VALUE)
                         .addComponent(btnExit))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -147,13 +147,13 @@ public class QuizMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
-        mainWindow.setVisible(true);
-        this.dispose();
+        mainWindow.setVisible(true); // display the main menu
+        this.dispose(); // close the quiz menu
     }//GEN-LAST:event_btnExitActionPerformed
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
-        int selected = -1;
-        if (rbOption1.isSelected()) {
+        int selected = -1; 
+        if (rbOption1.isSelected()) { // if the first option is selected...
             selected = 0;
         } else if (rbOption2.isSelected()) {
             selected = 1;
@@ -178,8 +178,8 @@ public class QuizMenu extends javax.swing.JFrame {
                 updateQuestion();
             } else {
                 results += "\nTotal score: " + noCorrect + "/10";
-                JOptionPane.showMessageDialog(null, results);
-                this.setVisible(false);
+                NotesMenu n = new NotesMenu(this, mainWindow);
+                n.setVisible(true);
             }
         }
     }//GEN-LAST:event_btnSubmitActionPerformed

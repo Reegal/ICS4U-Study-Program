@@ -39,6 +39,11 @@ public class NotesMenu extends javax.swing.JFrame {
         quizWindow = q;
         mainWindow = m;
         
+        btnNext.setVisible(false);
+        btnPrev.setVisible(false);
+        
+        txtNotes.setText(q.getResults());
+        txtNotes.setCaretPosition(0);
     }
 
     /**
@@ -126,7 +131,7 @@ public class NotesMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-        if(txtNotes.getText().substring(0, 4).equals("Resu")){
+        if(txtNotes.getText().substring(0, 4).equals("RESU")){
             quizWindow.dispose();
             mainWindow.setVisible(true);
             this.dispose();
