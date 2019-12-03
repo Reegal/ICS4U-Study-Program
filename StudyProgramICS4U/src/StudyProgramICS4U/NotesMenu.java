@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class NotesMenu extends javax.swing.JFrame {
     //reference to the main menu
     MainMenu mainWindow;
+    QuizMenu quizWindow;
     //index of arraylist
     int index = 0;
     //the arraylist
@@ -32,6 +33,13 @@ public class NotesMenu extends javax.swing.JFrame {
         //sets the position
         txtNotes.setCaretPosition(0);
     }
+    
+    public NotesMenu(QuizMenu q, MainMenu m){
+        initComponents();
+        quizWindow = q;
+        mainWindow = m;
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,6 +57,7 @@ public class NotesMenu extends javax.swing.JFrame {
         btnMenu = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Notes");
         setResizable(false);
 
         txtNotes.setEditable(false);
@@ -117,10 +126,17 @@ public class NotesMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenuActionPerformed
-        //makes this windo visible
-        mainWindow.setVisible(true);
-        //hides the main menu
-        this.setVisible(false);
+        if(txtNotes.getText().substring(0, 4).equals("Resu")){
+            quizWindow.dispose();
+            mainWindow.setVisible(true);
+            this.dispose();
+        }else{
+           //makes this windo visible
+            mainWindow.setVisible(true);
+            //hides the main menu
+            this.setVisible(false); 
+        }
+        
     }//GEN-LAST:event_btnMenuActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
