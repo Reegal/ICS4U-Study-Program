@@ -5,6 +5,10 @@
  */
 package StudyProgramICS4U;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author repan6047
@@ -12,12 +16,23 @@ package StudyProgramICS4U;
 public class QuizMenu extends javax.swing.JFrame {
 
     MainMenu mainWindow;
+    private int questionCount, noCorrect;
+    private ArrayList<Question> list;
+    private ArrayList<String> answers;
+    private String correctAnswer, results;
     /**
      * Creates new form QuizMenu
      */
     public QuizMenu(MainMenu m) {
         initComponents();
         mainWindow = m;
+        list = m.getQList();
+        Collections.shuffle(list);
+        barProgress.setValue(0);
+        questionCount = 0;
+        noCorrect = 0;
+        results = "RESULTS\n\n";
+        updateQuestion();
     }
 
     /**
@@ -37,26 +52,28 @@ public class QuizMenu extends javax.swing.JFrame {
         rbOption4 = new javax.swing.JRadioButton();
         barProgress = new javax.swing.JProgressBar();
         btnExit = new javax.swing.JButton();
+        btnSubmit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lblQuestion.setFont(new java.awt.Font("Times New Roman", 0, 30)); // NOI18N
+        lblQuestion.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         lblQuestion.setText("Question:");
 
         buttonGroup1.add(rbOption1);
-        rbOption1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        rbOption1.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
+        rbOption1.setSelected(true);
         rbOption1.setText("Option 1");
 
         buttonGroup1.add(rbOption2);
-        rbOption2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        rbOption2.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         rbOption2.setText("Option 2");
 
         buttonGroup1.add(rbOption3);
-        rbOption3.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        rbOption3.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         rbOption3.setText("Option 3");
 
         buttonGroup1.add(rbOption4);
-        rbOption4.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        rbOption4.setFont(new java.awt.Font("Times New Roman", 0, 12)); // NOI18N
         rbOption4.setText("Option 4");
 
         barProgress.setMaximum(10);
@@ -71,6 +88,14 @@ public class QuizMenu extends javax.swing.JFrame {
             }
         });
 
+        btnSubmit.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
+        btnSubmit.setText("Submit");
+        btnSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSubmitActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -81,15 +106,18 @@ public class QuizMenu extends javax.swing.JFrame {
                     .addComponent(barProgress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lblQuestion)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 388, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 434, Short.MAX_VALUE)
                         .addComponent(btnExit))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(rbOption1)
                             .addComponent(rbOption2)
-                            .addComponent(rbOption4)
                             .addComponent(rbOption3))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(rbOption4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -106,7 +134,9 @@ public class QuizMenu extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(rbOption3)
                 .addGap(18, 18, 18)
-                .addComponent(rbOption4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbOption4)
+                    .addComponent(btnSubmit))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(barProgress, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -120,11 +150,63 @@ public class QuizMenu extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnExitActionPerformed
 
-    
+    private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
+        int selected = -1;
+        if (rbOption1.isSelected()) {
+            selected = 0;
+        } else if (rbOption2.isSelected()) {
+            selected = 1;
+        } else if (rbOption3.isSelected()) {
+            selected = 2;
+        } else if (rbOption4.isSelected()) {
+            selected = 3;
+        }
+        if (selected == -1) {
+            JOptionPane.showMessageDialog(null, "Please select an answer!");
+        } else {
+            results += "Question " + questionCount + ": ";
+            if (answers.get(selected).equals(correctAnswer)) {
+                noCorrect ++;
+                JOptionPane.showMessageDialog(null, "Correct!");
+                results += "Correct\n";
+            } else {
+                JOptionPane.showMessageDialog(null, "Incorrect. The correct answer is: " + correctAnswer);
+                results += "Incorrect\n";
+            }
+            if (questionCount < 10) {
+                updateQuestion();
+            } else {
+                results += "\nTotal score: " + noCorrect + "/10";
+                JOptionPane.showMessageDialog(null, results);
+                this.setVisible(false);
+            }
+        }
+    }//GEN-LAST:event_btnSubmitActionPerformed
 
+    private void updateQuestion() {
+        answers = new ArrayList();
+        lblQuestion.setText(list.get(questionCount).getTitle());
+        for (int i = 0; i < 4; i ++) {
+            answers.add(list.get(questionCount).getAnswer(i));
+        }
+        Collections.shuffle(answers);
+        rbOption1.setText(answers.get(0));
+        rbOption2.setText(answers.get(1));
+        rbOption3.setText(answers.get(2));
+        rbOption4.setText(answers.get(3));
+        correctAnswer = list.get(questionCount).getCorrect();
+        questionCount ++;
+        barProgress.setValue(questionCount);
+    }
+    
+    public String getResults() {
+        return results;
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JProgressBar barProgress;
     private javax.swing.JButton btnExit;
+    private javax.swing.JButton btnSubmit;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel lblQuestion;
     private javax.swing.JRadioButton rbOption1;
