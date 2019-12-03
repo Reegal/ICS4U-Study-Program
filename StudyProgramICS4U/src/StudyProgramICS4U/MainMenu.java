@@ -189,7 +189,7 @@ public class MainMenu extends javax.swing.JFrame {
         }
         //set the other window to visible
         quizWindow.setVisible(true);
-        //hide this windo
+        //hide this window
         this.setVisible(false);
     }//GEN-LAST:event_btnQuizActionPerformed
 
