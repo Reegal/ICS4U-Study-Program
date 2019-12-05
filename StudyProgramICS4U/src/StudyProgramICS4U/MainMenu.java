@@ -196,6 +196,9 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
         this.dispose();
+        if(notesWindow != null){
+            notesWindow.dispose();
+        }
     }//GEN-LAST:event_btnExitActionPerformed
 
     /**
