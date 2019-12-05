@@ -181,6 +181,7 @@ public class QuizMenu extends javax.swing.JFrame {
             } else {//otherwise
                 results += "\nTotal score: " + noCorrect + "/10";//finalize results string
                 NotesMenu n = new NotesMenu(this, mainWindow);//open the notes window as a results window
+                this.setVisible(false);
                 n.setVisible(true);
             }
         }
