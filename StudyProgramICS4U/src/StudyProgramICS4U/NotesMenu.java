@@ -23,6 +23,7 @@ public class NotesMenu extends javax.swing.JFrame {
      * Creates new form NotesMenu
      */
     public NotesMenu(MainMenu m) {
+        this.setTitle("Notes");
         initComponents();
         //opens the connection
         mainWindow = m;
@@ -38,6 +39,7 @@ public class NotesMenu extends javax.swing.JFrame {
     }
     
     public NotesMenu(QuizMenu q, MainMenu m){
+        this.setTitle("Results");
         initComponents();
         quizWindow = q;
         mainWindow = m;

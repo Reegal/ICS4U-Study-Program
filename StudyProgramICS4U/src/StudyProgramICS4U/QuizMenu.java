@@ -55,6 +55,7 @@ public class QuizMenu extends javax.swing.JFrame {
         btnSubmit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Quiz Menu");
         setResizable(false);
 
         lblQuestion.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
