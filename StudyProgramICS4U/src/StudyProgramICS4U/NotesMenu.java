@@ -32,16 +32,19 @@ public class NotesMenu extends javax.swing.JFrame {
         txtNotes.setText("" + nList.get(index));
         //sets the position
         txtNotes.setCaretPosition(0);
+        //make the buttons visible
+        btnNext.setVisible(true);
+        btnPrev.setVisible(true);
     }
     
     public NotesMenu(QuizMenu q, MainMenu m){
         initComponents();
         quizWindow = q;
         mainWindow = m;
-        
+        //hide the buttons
         btnNext.setVisible(false);
         btnPrev.setVisible(false);
-        
+        //set the text and position
         txtNotes.setText(q.getResults());
         txtNotes.setCaretPosition(0);
     }

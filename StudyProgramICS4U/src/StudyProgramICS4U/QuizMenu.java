@@ -162,46 +162,47 @@ public class QuizMenu extends javax.swing.JFrame {
         } else if (rbOption4.isSelected()) {
             selected = 3;
         }
+        //if nothing is seleted, ask them to submit an answer
         if (selected == -1) {
             JOptionPane.showMessageDialog(null, "Please select an answer!");
-        } else {
-            results += "Question " + questionCount + ": ";
-            if (answers.get(selected).equals(correctAnswer)) {
-                noCorrect ++;
-                JOptionPane.showMessageDialog(null, "Correct!");
-                results += "Correct\n";
-            } else {
-                JOptionPane.showMessageDialog(null, "Incorrect. The correct answer is: " + correctAnswer);
-                results += "Incorrect\n";
+        } else {//otherwise
+            results += "Question " + questionCount + ": ";//build the results string
+            if (answers.get(selected).equals(correctAnswer)) {//if it's correct
+                noCorrect ++;//add to the correct number
+                JOptionPane.showMessageDialog(null, "Correct!");//inform the user that it was correct
+                results += "Correct\n";//add to the result string
+            } else {//if incorrect
+                JOptionPane.showMessageDialog(null, "Incorrect. The correct answer is: " + correctAnswer);//display the correct answer
+                results += "Incorrect\n";//add to the results string
             }
-            if (questionCount < 10) {
-                updateQuestion();
-            } else {
-                results += "\nTotal score: " + noCorrect + "/10";
-                NotesMenu n = new NotesMenu(this, mainWindow);
+            if (questionCount < 10) {//if there are more questions
+                updateQuestion();//go next question
+            } else {//otherwise
+                results += "\nTotal score: " + noCorrect + "/10";//finalize results string
+                NotesMenu n = new NotesMenu(this, mainWindow);//open the notes window as a results window
                 n.setVisible(true);
             }
         }
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void updateQuestion() {
-        answers = new ArrayList();
-        lblQuestion.setText(list.get(questionCount).getTitle());
-        for (int i = 0; i < 4; i ++) {
+        answers = new ArrayList();//make an array list for the answers
+        lblQuestion.setText(list.get(questionCount).getTitle());//put the question in the title
+        for (int i = 0; i < 4; i ++) {//get the 4 answers
             answers.add(list.get(questionCount).getAnswer(i));
         }
-        Collections.shuffle(answers);
-        rbOption1.setText(answers.get(0));
+        Collections.shuffle(answers);//shuffle the answers
+        rbOption1.setText(answers.get(0));//fill the 4 answers
         rbOption2.setText(answers.get(1));
         rbOption3.setText(answers.get(2));
         rbOption4.setText(answers.get(3));
-        correctAnswer = list.get(questionCount).getCorrect();
-        questionCount ++;
-        barProgress.setValue(questionCount);
+        correctAnswer = list.get(questionCount).getCorrect();//store the correct answer
+        questionCount ++;//increase the question count
+        barProgress.setValue(questionCount);//update the progress bar
     }
     
     public String getResults() {
-        return results;
+        return results;//getter to return the results to the results window
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
